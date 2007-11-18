@@ -1,0 +1,9 @@
+diff -uraN gnome-do/Do/gnome-do.desktop gnome-do.orig/Do/gnome-do.desktop
+--- gnome-do/Do/gnome-do.desktop	2007-11-14 14:03:08.000000000 +0100
++++ gnome-do.orig/Do/gnome-do.desktop	2007-11-12 20:54:30.000000000 +0100
+@@ -9,4 +9,4 @@
+ Comment=Do things quickly with objects in your GNOME desktop enviornment
+ Categories=Utility;
+ OnlyShowIn=GNOME;
+-GenericName[en_US]=
++GenericName=
