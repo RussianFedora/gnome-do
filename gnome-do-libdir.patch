@@ -1,0 +1,84 @@
+diff -uraN do-0.1/Do/gnome-do.in do-0.1.fixed/Do/gnome-do.in
+--- do-0.1/Do/gnome-do.in	2007-11-12 20:36:20.000000000 +0100
++++ do-0.1.fixed/Do/gnome-do.in	2007-11-17 10:00:30.000000000 +0100
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+ 
+-exec mono "@prefix@/lib/@PACKAGE@/Do.exe" "$@"
++exec mono "@libdir@/@PACKAGE@/Do.exe" "$@"
+diff -uraN do-0.1/Do/Makefile.in do-0.1.fixed/Do/Makefile.in
+--- do-0.1/Do/Makefile.in	2007-11-12 20:36:21.000000000 +0100
++++ do-0.1.fixed/Do/Makefile.in	2007-11-17 10:04:52.000000000 +0100
+@@ -271,9 +271,9 @@
+ bin_SCRIPTS = $(BINARIES)
+ linuxdesktopapplicationsdir = @prefix@/share/applications
+ linuxdesktopapplications_DATA = $(LINUX_DESKTOPAPPLICATIONS)
+-programfilesdir = @prefix@/lib/@PACKAGE@
++programfilesdir = @libdir@/@PACKAGE@
+ programfiles_DATA = $(PROGRAMFILES)
+-linuxpkgconfigdir = @prefix@/lib/pkgconfig
++linuxpkgconfigdir = @libdir@/pkgconfig
+ linuxpkgconfig_DATA = $(LINUX_PKGCONFIG)
+ all: all-am
+ 
+diff -uraN do-0.1/Do.Addins/do.addins.pc.in do-0.1.fixed/Do.Addins/do.addins.pc.in
+--- do-0.1/Do.Addins/do.addins.pc.in	2007-11-12 20:36:20.000000000 +0100
++++ do-0.1.fixed/Do.Addins/do.addins.pc.in	2007-11-17 10:00:30.000000000 +0100
+@@ -3,4 +3,4 @@
+ Version: 0.1
+ 
+ Requires: 
+-Libs: -r:@prefix@/lib/@PACKAGE@/Do.Addins.dll
++Libs: -r:@libdir@/@PACKAGE@/Do.Addins.dll
+diff -uraN do-0.1/Do.Addins/Makefile.in do-0.1.fixed/Do.Addins/Makefile.in
+--- do-0.1/Do.Addins/Makefile.in	2007-11-12 20:36:21.000000000 +0100
++++ do-0.1.fixed/Do.Addins/Makefile.in	2007-11-17 10:09:59.000000000 +0100
+@@ -238,9 +238,9 @@
+ bin_SCRIPTS = $(BINARIES)
+ linuxdesktopapplicationsdir = @prefix@/share/applications
+ linuxdesktopapplications_DATA = $(LINUX_DESKTOPAPPLICATIONS)
+-programfilesdir = @prefix@/lib/@PACKAGE@
++programfilesdir = @libdir@/@PACKAGE@
+ programfiles_DATA = $(PROGRAMFILES)
+-linuxpkgconfigdir = @prefix@/lib/pkgconfig
++linuxpkgconfigdir = @libdir@/pkgconfig
+ linuxpkgconfig_DATA = $(LINUX_PKGCONFIG)
+ all: all-am
+ 
+diff -uraN do-0.1/Do.DBus/do.dbus.pc.in do-0.1.fixed/Do.DBus/do.dbus.pc.in
+--- do-0.1/Do.DBus/do.dbus.pc.in	2007-11-12 20:36:20.000000000 +0100
++++ do-0.1.fixed/Do.DBus/do.dbus.pc.in	2007-11-17 10:00:30.000000000 +0100
+@@ -3,4 +3,4 @@
+ Version: 0.1
+ 
+ Requires: 
+-Libs: -r:@prefix@/lib/@PACKAGE@/Do.DBus.dll
++Libs: -r:@libdir@/@PACKAGE@/Do.DBus.dll
+diff -uraN do-0.1/Do.DBus/Makefile.in do-0.1.fixed/Do.DBus/Makefile.in
+--- do-0.1/Do.DBus/Makefile.in	2007-11-12 20:36:21.000000000 +0100
++++ do-0.1.fixed/Do.DBus/Makefile.in	2007-11-17 10:03:50.000000000 +0100
+@@ -213,9 +213,9 @@
+ bin_SCRIPTS = $(BINARIES)
+ linuxdesktopapplicationsdir = @prefix@/share/applications
+ linuxdesktopapplications_DATA = $(LINUX_DESKTOPAPPLICATIONS)
+-programfilesdir = @prefix@/lib/@PACKAGE@
++programfilesdir = @libdir@/@PACKAGE@
+ programfiles_DATA = $(PROGRAMFILES)
+-linuxpkgconfigdir = @prefix@/lib/pkgconfig
++linuxpkgconfigdir = @libdir@/pkgconfig
+ linuxpkgconfig_DATA = $(LINUX_PKGCONFIG)
+ all: all-am
+ 
+diff -uraN do-0.1/Makefile.include do-0.1.fixed/Makefile.include
+--- do-0.1/Makefile.include	2007-11-12 20:36:20.000000000 +0100
++++ do-0.1.fixed/Makefile.include	2007-11-17 10:00:30.000000000 +0100
+@@ -31,7 +31,7 @@
+ 
+ linuxdesktopapplicationsdir = @prefix@/share/applications
+ linuxdesktopapplications_DATA = $(LINUX_DESKTOPAPPLICATIONS)
+-programfilesdir = @prefix@/lib/@PACKAGE@
++programfilesdir = @libdir@/@PACKAGE@
+ programfiles_DATA = $(PROGRAMFILES)
+-linuxpkgconfigdir = @prefix@/lib/pkgconfig
++linuxpkgconfigdir = @libdir@/pkgconfig
+ linuxpkgconfig_DATA = $(LINUX_PKGCONFIG)
