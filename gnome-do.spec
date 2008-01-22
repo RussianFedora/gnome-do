@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.0.1
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -23,6 +23,8 @@ BuildRequires:		ndesk-dbus-glib-devel
 BuildRequires:		gtk-sharp2-devel
 BuildRequires:		gnome-sharp-devel
 BuildRequires:		gettext
+BuildRequires:		perl-XML-Parser
+BuildRequires:		intltool
 
 Requires:		mono-core
 
@@ -79,6 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-1
+- Fix BuildRequires
+
 * Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-1
 - bump to 0.3.0.1
 - update patches
