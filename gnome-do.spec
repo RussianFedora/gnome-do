@@ -1,14 +1,14 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.0.2
+Version:		0.3.0.1
 Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			https://edge.launchpad.net/gc/
-Source0:		http://do.davebsd.com/src/%{name}_%{version}.orig.tar.gz
+Source0:		http://do.davebsd.com/src/%{name}_%{version}.tar.gz
 Patch0:			%{name}-libdir.patch
 Patch1:			%{name}-desktopfile.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -22,6 +22,9 @@ BuildRequires:		ndesk-dbus-devel
 BuildRequires:		ndesk-dbus-glib-devel
 BuildRequires:		gtk-sharp2-devel
 BuildRequires:		gnome-sharp-devel
+BuildRequires:		gettext
+BuildRequires:		perl-XML-Parser
+BuildRequires:		intltool
 
 Requires:		mono-core
 
@@ -40,11 +43,12 @@ Requires:		pkgconfig
 Development files for GNOME Do
 
 %prep
-%setup -q -n do-0.1
+%setup -q -n do-0.3
 
-# fix libdir, https://bugs.edge.launchpad.net/gc/+bug/162255
+# "fix" libdir
 %patch0 -p1 -b .libdir
-# adjust .desktop to have non-localized GenericName
+
+# adjust .desktop, Version setting breaks spec.
 %patch1 -p1 -b .desktopfile
 
 %configure
@@ -61,10 +65,12 @@ desktop-file-install --vendor gnome --delete-original		\
 	--add-only-show-in=GNOME				\
 	$RPM_BUILD_ROOT%{_datadir}/applications/gnome-do.desktop
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root,-)
 %{_bindir}/gnome-do
 %{_libdir}/do/*
@@ -75,6 +81,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-1
+- Fix BuildRequires
+
+* Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-1
+- bump to 0.3.0.1
+- update patches
+
 * Sat Nov 17 2007 David Nielsen <david@lovesunix.net> - 0.0.2-2
 - updated libdir patch
 - cleaned up desktop-file-install invocation
