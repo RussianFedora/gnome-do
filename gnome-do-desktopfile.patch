@@ -1,9 +1,14 @@
 diff -uarN do-0.3.orig/Do/gnome-do.desktop do-0.3/Do/gnome-do.desktop
 --- do-0.3.orig/Do/gnome-do.desktop	2008-01-22 01:49:45.000000000 +0100
-+++ do-0.3/Do/gnome-do.desktop	2008-01-22 01:50:18.000000000 +0100
-@@ -1,5 +1,4 @@
++++ do-0.3/Do/gnome-do.desktop	2008-01-25 04:36:38.000000000 +0100
+@@ -1,9 +1,8 @@
  [Desktop Entry]
 -Version=0.1
  Encoding=UTF-8
  Name=GNOME Do
  Type=Application
+-Exec=gnome-do
++Exec=gnome-do -q
+ Terminal=false
+ Icon=gnome-run
+ Comment=Do things quickly with objects in your GNOME desktop enviornment
