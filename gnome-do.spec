@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.0.1
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 desktop-file-install --vendor gnome --delete-original		\
-	--dir $RPM_BUILD_ROOT%{_datadir}/applications		\
+	--dir $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart	\
 	--add-only-show-in=GNOME				\
 	$RPM_BUILD_ROOT%{_datadir}/applications/gnome-do.desktop
 
@@ -74,14 +74,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %{_bindir}/gnome-do
 %{_libdir}/do/*
-%{_datadir}/applications/gnome-do.desktop
+%{_sysconfdir}/xdg/autostart/gnome-do.desktop
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-1
+* Fri Jan 25 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-3
+- autostart gnome-do in quiet mode with the user session
+- to invoke gnome-do use super+space
+
+* Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-2
 - Fix BuildRequires
 
 * Tue Jan 22 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-1
