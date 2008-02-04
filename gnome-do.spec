@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.0.1
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -27,6 +27,7 @@ BuildRequires:		perl-XML-Parser
 BuildRequires:		intltool
 
 Requires:		mono-core
+Requires:		tomboy
 
 %description
 Allows you to quickly search for many objects present in your
@@ -81,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Mon Feb 04 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-4
+- #431462 - Correctly pull in Tomboy runtime dependency
+
 * Fri Jan 25 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-3
 - autostart gnome-do in quiet mode with the user session
 - to invoke gnome-do use super+space
