@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.0.1
-Release:		4%{?dist}
+Release:		5%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -28,6 +28,8 @@ BuildRequires:		intltool
 
 Requires:		mono-core
 Requires:		tomboy
+Requires:		ndesk-dbus
+Requires:		ndesk-dbus-glib
 
 %description
 Allows you to quickly search for many objects present in your
@@ -82,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Wed Feb 06 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-5
+- #431589 - Force runtime dependency on ndesk-dbus(-glib)
+
 * Mon Feb 04 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-4
 - #431462 - Correctly pull in Tomboy runtime dependency
 
