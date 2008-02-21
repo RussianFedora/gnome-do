@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.1
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -30,6 +30,7 @@ Requires:		mono-core
 Requires:		tomboy
 Requires:		ndesk-dbus
 Requires:		ndesk-dbus-glib
+Requires:		pkgconfig
 
 %description
 Allows you to quickly search for many objects present in your
@@ -84,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu Feb 21 2008 David Nielsen <david@lovesunix.net> - 0.3.1-2
+- Fix 432201
+
 * Thu Feb 21 2008 David Nielsen <david@lovesunix.net> - 0.3.1-1
 - Bump to 0.3.1
 
