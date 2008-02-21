@@ -1,14 +1,14 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.3.0.1
-Release:		5%{?dist}
+Version:		0.3.1
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			https://edge.launchpad.net/gc/
-Source0:		http://do.davebsd.com/src/%{name}_%{version}.tar.gz
+Source0:		http://do.davebsd.com/src/%{name}-%{version}.tar.gz
 Patch0:			%{name}-libdir.patch
 Patch1:			%{name}-desktopfile.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -46,9 +46,9 @@ Requires:		pkgconfig
 Development files for GNOME Do
 
 %prep
-%setup -q -n do-0.3
+%setup -q
 
-# "fix" libdir
+# fix libdir
 %patch0 -p1 -b .libdir
 
 # adjust .desktop, Version setting breaks spec.
@@ -75,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%{_bindir}/gnome-do
-%{_libdir}/do/*
+%{_bindir}/gnome-do/
+%{_libdir}/gnome-do/
 %{_sysconfdir}/xdg/autostart/gnome-do.desktop
 
 %files devel
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu Feb 21 2008 David Nielsen <david@lovesunix.net> - 0.3.1-1
+- Bump to 0.3.1
+
 * Wed Feb 06 2008 David Nielsen <david@lovesunix.net> - 0.3.0.1-5
 - #431589 - Force runtime dependency on ndesk-dbus(-glib)
 
