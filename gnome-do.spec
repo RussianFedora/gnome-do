@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.1
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -85,6 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Feb 29 2008 David Nielsen <gnomeuser@gmail.com> - 0.3.1-3
+- #432201 - try 2
+- Better excluding of non mono JIT archs
+
 * Thu Feb 21 2008 David Nielsen <david@lovesunix.net> - 0.3.1-2
 - Fix 432201
 
