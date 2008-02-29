@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.3.1
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -13,8 +13,8 @@ Patch0:			%{name}-libdir.patch
 Patch1:			%{name}-desktopfile.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-# Various Mono dependencies are not available for ppc64; see bug 241850.
-ExcludeArch:		ppc64
+# JIT only availible on these:
+ExclusiveArch:		%ix86 x86_64 ppc ia64 armv4l sparc alpha
 
 BuildRequires:		mono-devel
 BuildRequires:		desktop-file-utils
@@ -85,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Feb 29 2008 David Nielsen <gnomeuser@gmail.com> - 0.3.1-4
+- Actually do the jit change
+
 * Fri Feb 29 2008 David Nielsen <gnomeuser@gmail.com> - 0.3.1-3
 - #432201 - try 2
 - Better excluding of non mono JIT archs
