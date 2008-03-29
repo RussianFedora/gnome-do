@@ -1,16 +1,15 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.3.1
-Release:		2%{?dist}
+Version:		0.4.0.1
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			https://edge.launchpad.net/gc/
 Source0:		http://do.davebsd.com/src/%{name}-%{version}.tar.gz
-Patch0:			%{name}-libdir.patch
-Patch1:			%{name}-desktopfile.patch
+Patch0:			%{name}-%{version}-libdir.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
@@ -25,6 +24,7 @@ BuildRequires:		gnome-sharp-devel
 BuildRequires:		gettext
 BuildRequires:		perl-XML-Parser
 BuildRequires:		intltool
+BuildRequires:		gtk2-devel
 
 Requires:		mono-core
 Requires:		tomboy
@@ -51,9 +51,6 @@ Development files for GNOME Do
 
 # fix libdir
 %patch0 -p1 -b .libdir
-
-# adjust .desktop, Version setting breaks spec.
-%patch1 -p1 -b .desktopfile
 
 %configure
 
@@ -85,6 +82,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Sat Mar 29 2008 David Nielsen <gnomeuser@gmail.com> - 0.4.0.1-1
+- Bump to 0.4.0.1
+- Hopefully bring an end to the endless dups of 432201
+
 * Thu Feb 21 2008 David Nielsen <david@lovesunix.net> - 0.3.1-2
 - Fix 432201
 
