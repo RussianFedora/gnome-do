@@ -2,12 +2,12 @@
 
 Name:			gnome-do
 Version:		0.4.0.1
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
-URL:			https://edge.launchpad.net/gc/
+URL:			http://do.davebsd.com/
 Source0:		http://do.davebsd.com/src/%{name}-%{version}.tar.gz
 Patch0:			%{name}-%{version}-libdir.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Tue Apr 01 2008 David Nielsen <gnomeuser@gmail.com> - 0.4.0.1-2
+- #439793 - correct URL
+
 * Sat Mar 29 2008 David Nielsen <gnomeuser@gmail.com> - 0.4.0.1-1
 - Bump to 0.4.0.1
 - Hopefully bring an end to the endless dups of 432201
