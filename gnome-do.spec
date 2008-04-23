@@ -1,15 +1,15 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.4.0.1
-Release:		2%{?dist}
+Version:		0.4.2.0
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
 Source0:		http://do.davebsd.com/src/%{name}-%{version}.tar.gz
-Patch0:			%{name}-%{version}-libdir.patch
+Patch0:			%{name}-libdir.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
@@ -73,15 +73,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
+%doc AUTHORS COPYING COPYRIGHT
 %{_bindir}/gnome-do/
 %{_libdir}/gnome-do/
-%{_sysconfdir}/xdg/autostart/gnome-do.desktop
+%config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-do.desktop
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Tue Apr 22 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.4.2.0-1
+- New upstrean release
+
 * Tue Apr 01 2008 David Nielsen <gnomeuser@gmail.com> - 0.4.0.1-2
 - #439793 - correct URL
 
