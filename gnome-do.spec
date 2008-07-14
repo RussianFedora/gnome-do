@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.4.2.0
-Release:		2%{?dist}
+Release:		2.1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -83,6 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Mon Jul 14 2008 Paul F. Johnson <paul@all-the-johnsons.co.uk> 0.4.2.0-2.1
+- rebuild
+
 * Wed Jun 04 2008 Caolán McNamara <caolanm@redhat.com> - 0.4.2.0-2
 - rebuild for dependancies
 
