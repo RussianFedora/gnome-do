@@ -1,0 +1,72 @@
+--- gnome-do-0.5.0.1/configure.keyring	2008-06-10 00:16:23.000000000 -0400
++++ gnome-do-0.5.0.1/configure	2008-07-06 21:27:32.000000000 -0400
+@@ -22036,12 +22036,12 @@
+         pkg_cv_GNOME_KEYRING_SHARP_CFLAGS="$GNOME_KEYRING_SHARP_CFLAGS"
+     else
+         if test -n "$PKG_CONFIG" && \
+-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"gnome-keyring-sharp\"") >&5
+-  ($PKG_CONFIG --exists --print-errors "gnome-keyring-sharp") 2>&5
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"gnome-keyring-sharp-1.0\"") >&5
++  ($PKG_CONFIG --exists --print-errors "gnome-keyring-sharp-1.0") 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; then
+-  pkg_cv_GNOME_KEYRING_SHARP_CFLAGS=`$PKG_CONFIG --cflags "gnome-keyring-sharp" 2>/dev/null`
++  pkg_cv_GNOME_KEYRING_SHARP_CFLAGS=`$PKG_CONFIG --cflags "gnome-keyring-sharp-1.0" 2>/dev/null`
+ else
+   pkg_failed=yes
+ fi
+@@ -22054,12 +22054,12 @@
+         pkg_cv_GNOME_KEYRING_SHARP_LIBS="$GNOME_KEYRING_SHARP_LIBS"
+     else
+         if test -n "$PKG_CONFIG" && \
+-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"gnome-keyring-sharp\"") >&5
+-  ($PKG_CONFIG --exists --print-errors "gnome-keyring-sharp") 2>&5
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"gnome-keyring-sharp-1.0\"") >&5
++  ($PKG_CONFIG --exists --print-errors "gnome-keyring-sharp-1.0") 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; then
+-  pkg_cv_GNOME_KEYRING_SHARP_LIBS=`$PKG_CONFIG --libs "gnome-keyring-sharp" 2>/dev/null`
++  pkg_cv_GNOME_KEYRING_SHARP_LIBS=`$PKG_CONFIG --libs "gnome-keyring-sharp-1.0" 2>/dev/null`
+ else
+   pkg_failed=yes
+ fi
+@@ -22078,14 +22078,14 @@
+         _pkg_short_errors_supported=no
+ fi
+         if test $_pkg_short_errors_supported = yes; then
+-	        GNOME_KEYRING_SHARP_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "gnome-keyring-sharp"`
++	        GNOME_KEYRING_SHARP_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "gnome-keyring-sharp-1.0"`
+         else
+-	        GNOME_KEYRING_SHARP_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "gnome-keyring-sharp"`
++	        GNOME_KEYRING_SHARP_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "gnome-keyring-sharp-1.0"`
+         fi
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$GNOME_KEYRING_SHARP_PKG_ERRORS" >&5
+ 
+-	{ { echo "$as_me:$LINENO: error: Package requirements (gnome-keyring-sharp) were not met:
++	{ { echo "$as_me:$LINENO: error: Package requirements (gnome-keyring-sharp-1.0) were not met:
+ 
+ $GNOME_KEYRING_SHARP_PKG_ERRORS
+ 
+@@ -22096,7 +22096,7 @@
+ and GNOME_KEYRING_SHARP_LIBS to avoid the need to call pkg-config.
+ See the pkg-config man page for more details.
+ " >&5
+-echo "$as_me: error: Package requirements (gnome-keyring-sharp) were not met:
++echo "$as_me: error: Package requirements (gnome-keyring-sharp-1.0) were not met:
+ 
+ $GNOME_KEYRING_SHARP_PKG_ERRORS
+ 
+--- gnome-do-0.5.0.1/Do.Addins/Makefile.in.keyring	2008-06-10 00:24:01.000000000 -0400
++++ gnome-do-0.5.0.1/Do.Addins/Makefile.in	2008-07-06 21:28:10.000000000 -0400
+@@ -336,7 +336,7 @@
+ 	-pkg:gconf-sharp-2.0 \
+ 	-pkg:glib-sharp-2.0 \
+ 	-pkg:gnome-desktop-sharp-2.0 \
+-	-pkg:gnome-keyring-sharp \
++	-pkg:gnome-keyring-sharp-1.0 \
+ 	-pkg:gnome-sharp-2.0 \
+ 	-pkg:gnome-vfs-sharp-2.0 \
+ 	-pkg:gtk-sharp-2.0 \

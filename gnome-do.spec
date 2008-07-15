@@ -1,15 +1,17 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.4.2.0
-Release:		2.1%{?dist}
+Version:		0.5.0.1
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-Source0:		http://do.davebsd.com/src/%{name}-%{version}.tar.gz
-Patch0:			%{name}-libdir.patch
+Source0:		http://launchpad.net/do/trunk/0.5/+download/%{name}-%{version}.tar.gz
+# keyring's .pc file has been renamed in latest CVS
+Patch0:			%{name}-0.5.0.1-keyring.patch
+Patch1:			%{name}-0.5.0.1-launcher.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
@@ -21,15 +23,16 @@ BuildRequires:		ndesk-dbus-devel
 BuildRequires:		ndesk-dbus-glib-devel
 BuildRequires:		gtk-sharp2-devel
 BuildRequires:		gnome-sharp-devel
+BuildRequires:		gnome-keyring-sharp-devel
 BuildRequires:		gettext
 BuildRequires:		perl-XML-Parser
 BuildRequires:		intltool
 BuildRequires:		gtk2-devel
 
 Requires:		mono-core
-Requires:		tomboy
 Requires:		ndesk-dbus
 Requires:		ndesk-dbus-glib
+Requires:		gnome-keyring-sharp
 Requires:		pkgconfig
 
 %description
@@ -48,14 +51,14 @@ Development files for GNOME Do
 
 %prep
 %setup -q
+%patch0 -p1 -b .keyring
+%patch1 -p1 -b .launcher
 
-# fix libdir
-%patch0 -p1 -b .libdir
-
-%configure
 
 %build
+%configure
 make %{?_smp_mflags}
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -83,8 +86,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Mon Jul 14 2008 Paul F. Johnson <paul@all-the-johnsons.co.uk> 0.4.2.0-2.1
-- rebuild
+* Sun Jul  6 2008 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.5.0.1-1
+- Update to 0.5.0.1
 
 * Wed Jun 04 2008 Caolán McNamara <caolanm@redhat.com> - 0.4.2.0-2
 - rebuild for dependancies
