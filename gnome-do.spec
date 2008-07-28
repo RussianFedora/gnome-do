@@ -9,8 +9,6 @@ License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
 Source0:		http://launchpad.net/do/trunk/0.5/+download/%{name}-%{version}.tar.gz
-Patch0:			%{name}-libdir.patch
-Source0:		http://launchpad.net/do/trunk/0.5/+download/%{name}-%{version}.tar.gz
 # keyring's .pc file has been renamed in latest CVS
 Patch0:			%{name}-0.5.0.1-keyring.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
