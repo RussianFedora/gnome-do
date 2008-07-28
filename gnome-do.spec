@@ -1,6 +1,8 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
+Version:		0.5.0.1   
+Release:		1%{?dist}
 Version:		0.5.0.1
 Release:		1%{?dist}
 Summary:		Quick launch and search
@@ -9,15 +11,16 @@ License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
 Source0:		http://launchpad.net/do/trunk/0.5/+download/%{name}-%{version}.tar.gz
+Patch0:			%{name}-libdir.patch
+Source0:		http://launchpad.net/do/trunk/0.5/+download/%{name}-%{version}.tar.gz
 # keyring's .pc file has been renamed in latest CVS
 Patch0:			%{name}-0.5.0.1-keyring.patch
-Patch1:			%{name}-0.5.0.1-launcher.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
 ExcludeArch:		ppc64
 
-BuildRequires:		mono-devel
+BuildRequires:		mono-devel, mono-addins-devel
 BuildRequires:		desktop-file-utils
 BuildRequires:		ndesk-dbus-devel
 BuildRequires:		ndesk-dbus-glib-devel
@@ -29,6 +32,8 @@ BuildRequires:		perl-XML-Parser
 BuildRequires:		intltool
 BuildRequires:		gtk2-devel
 
+Requires:		mono-core, mono-addins
+Requires:		tomboy
 Requires:		mono-core
 Requires:		ndesk-dbus
 Requires:		ndesk-dbus-glib
@@ -86,6 +91,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-1
+- New upstrean release
+
 * Sun Jul  6 2008 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.5.0.1-1
 - Update to 0.5.0.1
 
