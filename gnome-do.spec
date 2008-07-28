@@ -3,8 +3,6 @@
 Name:			gnome-do
 Version:		0.5.0.1   
 Release:		1%{?dist}
-Version:		0.5.0.1
-Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
