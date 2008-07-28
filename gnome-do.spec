@@ -90,9 +90,6 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-1
 - New upstrean release
 
-* Sun Jul  6 2008 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.5.0.1-1
-- Update to 0.5.0.1
-
 * Wed Jun 04 2008 Caolán McNamara <caolanm@redhat.com> - 0.4.2.0-2
 - rebuild for dependancies
 
