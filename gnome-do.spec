@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.5.0.1   
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -21,7 +21,7 @@ BuildRequires:		desktop-file-utils
 BuildRequires:		ndesk-dbus-devel
 BuildRequires:		ndesk-dbus-glib-devel
 BuildRequires:		gtk-sharp2-devel
-BuildRequires:		gnome-sharp-devel
+BuildRequires:		gnome-sharp-devel, gnome-desktop-sharp-devel
 BuildRequires:		gnome-keyring-sharp-devel
 BuildRequires:		gettext
 BuildRequires:		perl-XML-Parser
@@ -87,8 +87,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-3
+* Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-4
 - New upstrean release
+- Add gnome-desktop-sharp dependency
 
 * Wed Jun 04 2008 Caolán McNamara <caolanm@redhat.com> - 0.4.2.0-2
 - rebuild for dependancies
