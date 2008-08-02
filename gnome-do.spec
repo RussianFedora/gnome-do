@@ -53,7 +53,7 @@ Development files for GNOME Do
 %prep
 %setup -q
 %patch0 -p1 -b .keyring
-%patch1 -p1 -b .launcher
+#%patch1 -p1 -b .launcher
 
 
 %build
