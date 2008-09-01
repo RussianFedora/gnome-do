@@ -1,8 +1,8 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.5.0.1   
-Release:		4%{?dist}
+Version:		0.5.99
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -87,6 +87,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.99-1
+- New upstream release
+
 * Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-4
 - New upstrean release
 - Add gnome-desktop-sharp dependency
