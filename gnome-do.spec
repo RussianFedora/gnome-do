@@ -1,16 +1,15 @@
 %define			debug_package %{nil}
 
 Name:			gnome-do
-Version:		0.5.99
+Version:		0.6.1.0
 Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-Source0:		http://launchpad.net/do/trunk/0.5/+download/%{name}-%{version}.tar.gz
-# keyring's .pc file has been renamed in latest CVS
-Patch0:			%{name}-0.5.0.1-keyring.patch
+Source0:		http://launchpad.net/do/0.6/%{version}/+download/%{name}-%{version}.tar.gz
+
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
@@ -20,13 +19,17 @@ BuildRequires:		mono-devel, mono-addins-devel
 BuildRequires:		desktop-file-utils
 BuildRequires:		ndesk-dbus-devel
 BuildRequires:		ndesk-dbus-glib-devel
-BuildRequires:		gtk-sharp2-devel
+BuildRequires:		gtk-sharp2-devel, notify-sharp-devel
 BuildRequires:		gnome-sharp-devel, gnome-desktop-sharp-devel
 BuildRequires:		gnome-keyring-sharp-devel
 BuildRequires:		gettext
 BuildRequires:		perl-XML-Parser
 BuildRequires:		intltool
 BuildRequires:		gtk2-devel
+
+Requires(pre):		GConf2
+Requires(post): 	GConf2
+Requires(preun): 	GConf2
 
 Requires:		mono-core, mono-addins
 Requires:		tomboy
@@ -52,9 +55,6 @@ Development files for GNOME Do
 
 %prep
 %setup -q
-%patch0 -p1 -b .keyring
-#%patch1 -p1 -b .launcher
-
 
 %build
 %configure
@@ -63,6 +63,7 @@ make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 make install DESTDIR=$RPM_BUILD_ROOT
 
 desktop-file-install --vendor gnome --delete-original		\
@@ -71,6 +72,36 @@ desktop-file-install --vendor gnome --delete-original		\
 	$RPM_BUILD_ROOT%{_datadir}/applications/gnome-do.desktop
 
 %find_lang %{name}
+
+%pre
+if [ "$1" -gt 1 ]; then
+    export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+    gconftool-2 --makefile-uninstall-rule \
+      %{_sysconfdir}/gconf/schemas/%{name}.schemas >/dev/null || :
+fi
+
+%post
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-install-rule \
+  %{_sysconfdir}/gconf/schemas/%{name}.schemas > /dev/null || :
+
+touch --no-create %{_datadir}/icons/hicolor
+if [ -x %{_bindir}/gtk-update-icon-cache ] ; then
+  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+fi
+
+%preun
+if [ "$1" -eq 0 ]; then
+    export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+    gconftool-2 --makefile-uninstall-rule \
+      %{_sysconfdir}/gconf/schemas/%{name}.schemas > /dev/null || :
+fi
+
+%postun
+touch --no-create %{_datadir}/icons/hicolor
+if [ -x %{_bindir}/gtk-update-icon-cache ] ; then
+  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -81,13 +112,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/gnome-do/
 %{_libdir}/gnome-do/
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-do.desktop
+%config(noreplace) %{_sysconfdir}/gconf/schemas/*
+%{_datadir}/icons/hicolor/*/apps/gnome-do.*
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.99-1
+* Wed Oct 08 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.6.1.0-1
+- New Upstream Release
+
+* Fri Oct 03 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.6.0.1-1
+- New upstream release
+
+* Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.6.0.0-1
 - New upstream release
 
 * Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-4
