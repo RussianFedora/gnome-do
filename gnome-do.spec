@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.4.2.0
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -83,6 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Oct 24 2008 Xavier Lamien <lxtnow@gmail.com> - 0.4.2.0-2
+- rebuild against new gtk-sharp2.
+
 * Tue Apr 22 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.4.2.0-1
 - New upstrean release
 
