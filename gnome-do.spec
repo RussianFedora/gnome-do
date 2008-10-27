@@ -2,7 +2,7 @@
 
 Name:			gnome-do
 Version:		0.6.1.0
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -120,6 +120,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Mon Oct 27 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 0.6.1.0-2
+- rebuild against new gnome-sharp
+
 * Wed Oct 08 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.6.1.0-1
 - New Upstream Release
 
