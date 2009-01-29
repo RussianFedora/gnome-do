@@ -1,14 +1,15 @@
 %define			debug_package %{nil}
+%define                 mainver 0.6.1
 
 Name:			gnome-do
-Version:		0.6.1.0
-Release:		2%{?dist}
+Version:		%{mainver}.0
+Release:		3%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-Source0:		http://launchpad.net/do/0.6/%{version}/+download/%{name}-%{version}.tar.gz
+Source0:		http://launchpad.net/do/0.6/%{mainver}/+download/%{name}-%{version}.tar.gz
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -31,21 +32,22 @@ Requires(pre):		GConf2
 Requires(post): 	GConf2
 Requires(preun): 	GConf2
 
-Requires:		mono-core, mono-addins
-Requires:		tomboy
-Requires:		mono-core
+Requires:		mono-core mono-addins
 Requires:		ndesk-dbus
 Requires:		ndesk-dbus-glib
 Requires:		gnome-keyring-sharp
 Requires:		pkgconfig
 
 %description
-Allows you to quickly search for many objects present in your
-GNOME desktop environment and perform commonly used commands 
-on those objects
+GNOME Do (Do) is an intelligent launcher tool that makes performing
+common tasks on your computer simple and efficient. Do not only allows
+you to search for items in your desktop environment
+(e.g. applications, contacts, bookmarks, files, music), it also allows
+you to specify actions to perform on search results (e.g. run, open,
+email, chat, play).
 
 %package devel
-Summary:		Develpment files for GNOME Do
+Summary:		Development files for GNOME Do
 Group:			Development/Libraries
 Requires:		%{name} = %{version}-%{release}
 Requires:		pkgconfig
@@ -120,6 +122,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu Jan 29 2009 Michel Salim <salimma@fedoraproject.org> - 0.6.1.0-3
+- Remove Tomboy dependency (bz #481183)
+- Updated description, from Do 
+
 * Mon Oct 27 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 0.6.1.0-2
 - rebuild against new gnome-sharp
 
@@ -133,7 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 - New upstream release
 
 * Wed Jun 11 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.5.0.1-4
-- New upstrean release
+- New upstream release
 - Add gnome-desktop-sharp dependency
 
 * Wed Jun 04 2008 Caolán McNamara <caolanm@redhat.com> - 0.4.2.0-2
