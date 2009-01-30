@@ -1,15 +1,15 @@
 %define			debug_package %{nil}
-%define                 mainver 0.6.1
+%define                 mainver 0.8.0
 
 Name:			gnome-do
-Version:		%{mainver}.0
-Release:		3%{?dist}
+Version:		%{mainver}
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-Source0:		http://launchpad.net/do/0.6/%{mainver}/+download/%{name}-%{version}.tar.gz
+Source0:		http://launchpad.net/do/trunk/%{mainver}/+download/gnome-do-0.8.0.tar.gz
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -122,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Jan 30 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.0-1
+- New upstream release
+
 * Thu Jan 29 2009 Michel Salim <salimma@fedoraproject.org> - 0.6.1.0-3
 - Remove Tomboy dependency (bz #481183)
 - Updated description, from Do 
