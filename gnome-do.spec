@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		%{mainver}
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -122,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Sat Feb  7 2009 Michel Salim <salimma@fedoraproject.org> - 0.8.0-2
+- Rebuild against new mono-addins
+
 * Fri Jan 30 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.0-1
 - New upstream release
 
@@ -149,7 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 - rebuild for dependancies
 
 * Tue Apr 22 2008 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.4.2.0-1
-- New upstrean release
+- New upstream release
 
 * Tue Apr 01 2008 David Nielsen <gnomeuser@gmail.com> - 0.4.0.1-2
 - #439793 - correct URL
