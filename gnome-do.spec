@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		%{mainver}
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -73,6 +73,9 @@ desktop-file-install --vendor gnome --delete-original		\
 	--add-only-show-in=GNOME				\
 	$RPM_BUILD_ROOT%{_datadir}/applications/gnome-do.desktop
 
+#own this dir:
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}
+
 %find_lang %{name}
 
 %pre
@@ -113,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING COPYRIGHT
 %{_bindir}/gnome-do/
 %{_libdir}/gnome-do/
+%dir %{_datadir}/gnome-do/
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-do.desktop
 %config(noreplace) %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/icons/hicolor/*/apps/gnome-do.*
@@ -122,6 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Tue Mar 3 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.0-4
+- Own _datadir/gnome-do
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
