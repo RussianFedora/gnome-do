@@ -1,15 +1,15 @@
 %define			debug_package %{nil}
-%define                 mainver 0.8.0
+%define                 mainver 0.8.1
 
 Name:			gnome-do
-Version:		%{mainver}
-Release:		4%{?dist}
+Version:		0.8.1.3
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-Source0:		http://launchpad.net/do/trunk/%{mainver}/+download/gnome-do-0.8.0.tar.gz
+Source0:		http://edge.launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -126,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Tue Mar 17 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-1
+- New upstream release
+
 * Tue Mar 3 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.0-4
 - Own _datadir/gnome-do
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.0-3
