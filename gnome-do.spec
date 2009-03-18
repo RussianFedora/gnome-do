@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.1.3
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -116,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING COPYRIGHT
 %{_bindir}/gnome-do/
 %{_libdir}/gnome-do/
-%dir %{_datadir}/gnome-do/
+%{_datadir}/gnome-do/
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-do.desktop
 %config(noreplace) %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/icons/hicolor/*/apps/gnome-do.*
@@ -126,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Tue Mar 17 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-1
+* Tue Mar 17 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-2
 - New upstream release
 
 * Tue Mar 3 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.0-4
