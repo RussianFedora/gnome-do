@@ -1,0 +1,12 @@
+diff -up ./Do.Platform.Linux/src/Do.Universe/ApplicationItemSource.cs.orig ./Do.Platform.Linux/src/Do.Universe/ApplicationItemSource.cs
+--- ./Do.Platform.Linux/src/Do.Universe/ApplicationItemSource.cs.orig	2009-04-01 06:42:55.000000000 +0200
++++ ./Do.Platform.Linux/src/Do.Universe/ApplicationItemSource.cs	2009-04-01 06:43:33.000000000 +0200
+@@ -131,7 +131,7 @@ namespace Do.Universe.Linux {
+ 						yield return (new [] {home, ".local/share", appDirSuffix}.Aggregate (Path.Combine));
+ 					} else if (xdgVar == "XDG_DATA_DIRS") {
+ 						yield return Path.Combine ("/usr/local/share/", appDirSuffix);
+-						yield return Path.Combine ("/usr/share/applications", appDirSuffix);
++						yield return Path.Combine ("/usr/share/", appDirSuffix);
+ 					}
+ 				} else {
+ 					foreach (string dir in envPath.Split (':'))

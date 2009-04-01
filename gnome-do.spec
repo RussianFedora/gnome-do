@@ -3,13 +3,15 @@
 
 Name:			gnome-do
 Version:		0.8.1.3
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
 Source0:		http://edge.launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
+
+Patch0:			%{name}-%{version}-applicationspath.patch
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -57,6 +59,7 @@ Development files for GNOME Do
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
@@ -126,6 +129,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Wed Apr 01 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-3
+- Add patch to fix issue where applications wasn't being indexed
+
 * Tue Mar 17 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-2
 - New upstream release
 
