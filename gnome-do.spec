@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.1.3
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -37,7 +37,7 @@ Requires(preun): 	GConf2
 Requires:		mono-core mono-addins
 Requires:		ndesk-dbus
 Requires:		ndesk-dbus-glib
-Requires:		gnome-keyring-sharp
+Requires:		gnome-keyring-sharp, gnome-desktop-sharp
 Requires:		pkgconfig
 
 %description
@@ -129,6 +129,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Apr 10 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-4
+- Rebuild for new gnome-desktop-sharp
+- Add missing gnome-desktop-sharp requires
+
 * Wed Apr 01 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-3
 - Add patch to fix issue where applications wasn't being indexed
 
