@@ -16,7 +16,8 @@ Patch0:			%{name}-%{version}-applicationspath.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
-ExcludeArch:		ppc64
+#ExcludeArch:		ppc64
+ExclusiveArch:  %ix86 x86_64 ia64 armv4l sparc alpha
 
 BuildRequires:		mono-devel, mono-addins-devel
 BuildRequires:		desktop-file-utils
@@ -29,14 +30,13 @@ BuildRequires:		gettext
 BuildRequires:		perl-XML-Parser
 BuildRequires:		intltool
 BuildRequires:		gtk2-devel
+BuildRequires:		desktop-file-utils
 
 Requires(pre):		GConf2
 Requires(post): 	GConf2
 Requires(preun): 	GConf2
 
-Requires:		mono-core mono-addins
-Requires:		ndesk-dbus
-Requires:		ndesk-dbus-glib
+Requires:		mono(NDesk.DBus.GLib)
 Requires:		gnome-keyring-sharp, gnome-desktop-sharp
 Requires:		pkgconfig
 
@@ -71,10 +71,15 @@ rm -rf $RPM_BUILD_ROOT
 export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 make install DESTDIR=$RPM_BUILD_ROOT
 
-desktop-file-install --vendor gnome --delete-original		\
+desktop-file-install 	\
 	--dir $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart	\
 	--add-only-show-in=GNOME				\
 	$RPM_BUILD_ROOT%{_datadir}/applications/gnome-do.desktop
+desktop-file-install --delete-original  \
+        --dir $RPM_BUILD_ROOT%{_datadir}/applications   \
+        --remove-category Application \
+        $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
+
 
 #own this dir:
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -123,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gnome-do.desktop
 %config(noreplace) %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/icons/hicolor/*/apps/gnome-do.*
+%{_datadir}/applications/*
 
 %files devel
 %defattr(-,root,root,-)
@@ -130,6 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Fri Apr 10 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-4
+- Fix .desktop issue, install in both autostart and applications
 - Rebuild for new gnome-desktop-sharp
 - Add missing gnome-desktop-sharp requires
 
