@@ -16,15 +16,14 @@ Patch0:			%{name}-%{version}-applicationspath.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Various Mono dependencies are not available for ppc64; see bug 241850.
-#ExcludeArch:		ppc64
-ExclusiveArch:  %ix86 x86_64 ia64 armv4l sparc alpha
+ExcludeArch:		ppc64
 
 BuildRequires:		mono-devel, mono-addins-devel
 BuildRequires:		desktop-file-utils
 BuildRequires:		ndesk-dbus-devel
 BuildRequires:		ndesk-dbus-glib-devel
 BuildRequires:		gtk-sharp2-devel, notify-sharp-devel
-BuildRequires:		gnome-sharp-devel, gnome-desktop-sharp-devel
+BuildRequires:		gnome-sharp-devel, gnome-desktop-sharp-devel >= 2.26
 BuildRequires:		gnome-keyring-sharp-devel
 BuildRequires:		gettext
 BuildRequires:		perl-XML-Parser
@@ -36,7 +35,7 @@ Requires(pre):		GConf2
 Requires(post): 	GConf2
 Requires(preun): 	GConf2
 
-Requires:		mono(NDesk.DBus.GLib)
+Requires:		mono(NDesk.DBus.GLib) = 1.0.0.0
 Requires:		gnome-keyring-sharp, gnome-desktop-sharp
 Requires:		pkgconfig
 
@@ -139,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 - Fix .desktop issue, install in both autostart and applications
 - Rebuild for new gnome-desktop-sharp
 - Add missing gnome-desktop-sharp requires
+- Fix Ndesk-dbus Requires
 
 * Wed Apr 01 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-3
 - Add patch to fix issue where applications wasn't being indexed
