@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.1.3
-Release:		4%{?dist}
+Release:		5%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -134,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Fri Apr 10 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-4
+* Fri Apr 10 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-5
 - Fix .desktop issue, install in both autostart and applications
 - Rebuild for new gnome-desktop-sharp
 - Add missing gnome-desktop-sharp requires
