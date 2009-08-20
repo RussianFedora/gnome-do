@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.1.3
-Release:		6%{?dist}
+Release:		7%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -15,8 +15,6 @@ Patch0:			%{name}-%{version}-applicationspath.patch
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-# Various Mono dependencies are not available for ppc64; see bug 241850.
-ExcludeArch:		ppc64
 
 BuildRequires:		mono-devel, mono-addins-devel
 BuildRequires:		desktop-file-utils
@@ -134,8 +132,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu Aug 20 2009 Toshio Kuratomi <toshio@fedoraproject.org> - 0.8.1.3-7
+- Rebuild for ppc64 as the previous build was obsoleted.
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.1.3-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Sat May 30 2009 Xavier Lamien <laxathom@fedoraproject.org> - 0.8.1.3-6
+- Build arch ppc64.
 
 * Fri Apr 10 2009 Sindre Pedersen Bjørdal <sindrepb@fedoraproject.org> - 0.8.1.3-5
 - Fix .desktop issue, install in both autostart and applications
