@@ -1,17 +1,15 @@
 %define			debug_package %{nil}
-%define                 mainver 0.8.1
+%define                 mainver 0.8.2
 
 Name:			gnome-do
-Version:		0.8.1.3
-Release:		7%{?dist}
+Version:		0.8.2
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
 Source0:		http://edge.launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
-
-Patch0:			%{name}-%{version}-applicationspath.patch
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -56,7 +54,6 @@ Development files for GNOME Do
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
@@ -132,6 +129,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu Aug 20 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-1
+- Update to 0.8.2
+
 * Thu Aug 20 2009 Toshio Kuratomi <toshio@fedoraproject.org> - 0.8.1.3-7
 - Rebuild for ppc64 as the previous build was obsoleted.
 
