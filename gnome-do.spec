@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.2
-Release:		0%{?dist}
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -129,8 +129,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Thu Aug 20 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-0
-- Updates to 0.8.2
+* Thu Aug 20 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-1
+- Update to 0.8.2
 
 * Thu Aug 20 2009 Toshio Kuratomi <toshio@fedoraproject.org> - 0.8.1.3-7
 - Rebuild for ppc64 as the previous build was obsoleted.
