@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.2
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -34,6 +34,8 @@ Requires(preun): 	GConf2
 Requires:		mono(NDesk.DBus.GLib) = 1.0.0.0
 Requires:		gnome-keyring-sharp, gnome-desktop-sharp
 Requires:		pkgconfig
+
+ExcludeArch:            sparc64
 
 %description
 GNOME Do (Do) is an intelligent launcher tool that makes performing
@@ -130,6 +132,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Mon Oct 26 2009 Dennis Gilmore <dennis@ausil.us> - 0.8.2-3
+- Exclude sparc64  no mono available
+
 * Mon Aug 24 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-2
 - Fixes gnome-do plugin permissions. 
 
