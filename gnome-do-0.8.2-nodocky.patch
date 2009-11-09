@@ -1,0 +1,55 @@
+diff -up gnome-do-0.8.2/configure.ac.nodocky gnome-do-0.8.2/configure.ac
+--- gnome-do-0.8.2/configure.ac.nodocky	2009-11-10 09:01:30.183788696 +1000
++++ gnome-do-0.8.2/configure.ac	2009-11-10 09:01:39.240778770 +1000
+@@ -130,8 +130,6 @@ Do.Interface.Linux/Makefile
+ Do.Interface.Linux/src/AssemblyInfo.cs
+ Do.Interface.Linux.AnimationBase/Makefile
+ Do.Interface.Linux.Classic/Makefile
+-Do.Interface.Linux.Docky/Makefile
+-Do.Interface.Linux.Docky/AssemblyInfo.cs
+ Do.Interface.Linux.GlassFrame/Makefile
+ Do.Interface.Linux.HUD/Makefile
+ Do.Interface.Linux.Mini/Makefile
+diff -up gnome-do-0.8.2/configure.nodocky gnome-do-0.8.2/configure
+--- gnome-do-0.8.2/configure.nodocky	2009-11-10 09:00:49.172900856 +1000
++++ gnome-do-0.8.2/configure	2009-11-10 09:01:22.158902892 +1000
+@@ -17244,7 +17244,7 @@ fi
+ 
+ fi
+ 
+-ac_config_files="$ac_config_files BundledLibraries/Makefile Do/Do.exe.config Do/Makefile Do/gnome-do Do/src/AssemblyInfo.cs Do.Interface.Linux/Makefile Do.Interface.Linux/src/AssemblyInfo.cs Do.Interface.Linux.AnimationBase/Makefile Do.Interface.Linux.Classic/Makefile Do.Interface.Linux.Docky/Makefile Do.Interface.Linux.Docky/AssemblyInfo.cs Do.Interface.Linux.GlassFrame/Makefile Do.Interface.Linux.HUD/Makefile Do.Interface.Linux.Mini/Makefile Do.Interface.Wink/Makefile Do.Interface.Wink/src/AssemblyInfo.cs Do.Platform/Makefile Do.Platform/src/AssemblyInfo.cs Do.Platform.Linux/Makefile Do.Platform.Linux/src/AssemblyInfo.cs Do.Platform.OSX/AssemblyInfo.cs Do.Platform.Windows/AssemblyInfo.cs Do.Universe/Makefile Do.Universe/src/AssemblyInfo.cs libdo/Makefile Makefile data/Makefile data/Docky.DefaultClockTheme/Makefile data/icons/Makefile data/icons/hicolor/16x16/Makefile data/icons/hicolor/16x16/apps/Makefile data/icons/hicolor/22x22/Makefile data/icons/hicolor/22x22/apps/Makefile data/icons/hicolor/24x24/Makefile data/icons/hicolor/24x24/apps/Makefile data/icons/hicolor/32x32/Makefile data/icons/hicolor/32x32/apps/Makefile data/icons/hicolor/48x48/Makefile data/icons/hicolor/48x48/apps/Makefile data/icons/hicolor/256x256/Makefile data/icons/hicolor/256x256/apps/Makefile data/icons/hicolor/scalable/Makefile data/icons/hicolor/scalable/apps/Makefile data/icons/hicolor/Makefile m4/Makefile po/Makefile.in"
++ac_config_files="$ac_config_files BundledLibraries/Makefile Do/Do.exe.config Do/Makefile Do/gnome-do Do/src/AssemblyInfo.cs Do.Interface.Linux/Makefile Do.Interface.Linux/src/AssemblyInfo.cs Do.Interface.Linux.AnimationBase/Makefile Do.Interface.Linux.Classic/Makefile Do.Interface.Linux.GlassFrame/Makefile Do.Interface.Linux.HUD/Makefile Do.Interface.Linux.Mini/Makefile Do.Interface.Wink/Makefile Do.Interface.Wink/src/AssemblyInfo.cs Do.Platform/Makefile Do.Platform/src/AssemblyInfo.cs Do.Platform.Linux/Makefile Do.Platform.Linux/src/AssemblyInfo.cs Do.Platform.OSX/AssemblyInfo.cs Do.Platform.Windows/AssemblyInfo.cs Do.Universe/Makefile Do.Universe/src/AssemblyInfo.cs libdo/Makefile Makefile data/Makefile data/Docky.DefaultClockTheme/Makefile data/icons/Makefile data/icons/hicolor/16x16/Makefile data/icons/hicolor/16x16/apps/Makefile data/icons/hicolor/22x22/Makefile data/icons/hicolor/22x22/apps/Makefile data/icons/hicolor/24x24/Makefile data/icons/hicolor/24x24/apps/Makefile data/icons/hicolor/32x32/Makefile data/icons/hicolor/32x32/apps/Makefile data/icons/hicolor/48x48/Makefile data/icons/hicolor/48x48/apps/Makefile data/icons/hicolor/256x256/Makefile data/icons/hicolor/256x256/apps/Makefile data/icons/hicolor/scalable/Makefile data/icons/hicolor/scalable/apps/Makefile data/icons/hicolor/Makefile m4/Makefile po/Makefile.in"
+ 
+ 
+ cat >confcache <<\_ACEOF
+@@ -18195,8 +18195,6 @@ do
+     "Do.Interface.Linux/src/AssemblyInfo.cs") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux/src/AssemblyInfo.cs" ;;
+     "Do.Interface.Linux.AnimationBase/Makefile") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.AnimationBase/Makefile" ;;
+     "Do.Interface.Linux.Classic/Makefile") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.Classic/Makefile" ;;
+-    "Do.Interface.Linux.Docky/Makefile") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.Docky/Makefile" ;;
+-    "Do.Interface.Linux.Docky/AssemblyInfo.cs") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.Docky/AssemblyInfo.cs" ;;
+     "Do.Interface.Linux.GlassFrame/Makefile") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.GlassFrame/Makefile" ;;
+     "Do.Interface.Linux.HUD/Makefile") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.HUD/Makefile" ;;
+     "Do.Interface.Linux.Mini/Makefile") CONFIG_FILES="$CONFIG_FILES Do.Interface.Linux.Mini/Makefile" ;;
+diff -up gnome-do-0.8.2/Makefile.am.nodocky gnome-do-0.8.2/Makefile.am
+--- gnome-do-0.8.2/Makefile.am.nodocky	2009-11-10 09:01:53.100778759 +1000
++++ gnome-do-0.8.2/Makefile.am	2009-11-10 09:01:58.548872598 +1000
+@@ -13,7 +13,6 @@ SUBDIRS = \
+ 	Do.Platform.Linux \
+ 	Do.Interface.Linux.AnimationBase \
+ 	Do.Interface.Linux.Classic \
+-	Do.Interface.Linux.Docky \
+ 	Do.Interface.Linux.GlassFrame \
+ 	Do.Interface.Linux.HUD \
+ 	Do.Interface.Linux.Mini \
+diff -up gnome-do-0.8.2/Makefile.in.nodocky gnome-do-0.8.2/Makefile.in
+--- gnome-do-0.8.2/Makefile.in.nodocky	2009-11-10 09:02:05.186779316 +1000
++++ gnome-do-0.8.2/Makefile.in	2009-11-10 09:02:09.834778379 +1000
+@@ -282,7 +282,6 @@ SUBDIRS = \
+ 	Do.Platform.Linux \
+ 	Do.Interface.Linux.AnimationBase \
+ 	Do.Interface.Linux.Classic \
+-	Do.Interface.Linux.Docky \
+ 	Do.Interface.Linux.GlassFrame \
+ 	Do.Interface.Linux.HUD \
+ 	Do.Interface.Linux.Mini \
