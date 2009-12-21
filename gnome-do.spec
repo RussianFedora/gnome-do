@@ -1,15 +1,15 @@
 %define			debug_package %{nil}
-%define			mainver 0.8.2
+%define			mainver 0.8.3
 
 Name:			gnome-do
-Version:		0.8.2
-Release:		5%{?dist}
+Version:		0.8.3.1
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-Source0:		http://edge.launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
+Source0:		http://launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
 
 # The "Icon Magnification" was removed from "Docky" due to a potential violation of US Patent 7434177
 Patch0:			gnome-do-0.8.2-nozoom.patch
@@ -136,6 +136,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Mon Dec 21 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.3.1-1
+- Fixes the "Eating 100% CPU" bug. 
+- Updates to 0.8.3.1
+- More info: https://launchpad.net/do/+announcement/4538
+
 * Wed Nov 18 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-5
 - Restored "Docky", but removed Icon Zoom due to potential violation of patents. 
 
