@@ -1,0 +1,42 @@
+diff -rNc gnome-do-0.8.2/Do.Interface.Linux.Docky/src/Docky.Interface/DockyConfigurationWidget.cs gnome-do-0.8.2-nozoom/Do.Interface.Linux.Docky/src/Docky.Interface/DockyConfigurationWidget.cs
+*** gnome-do-0.8.2/Do.Interface.Linux.Docky/src/Docky.Interface/DockyConfigurationWidget.cs	Thu Jun 25 22:39:51 2009
+--- gnome-do-0.8.2-nozoom/Do.Interface.Linux.Docky/src/Docky.Interface/DockyConfigurationWidget.cs	Wed Nov 18 11:36:21 2009
+***************
+*** 133,139 ****
+  		
+  		void SetSensitivity ()
+  		{
+! 			zoom_scale.Sensitive = DockPreferences.ZoomEnabled;
+  		}
+  
+  		void HandleToggled (object o, ToggledArgs args)
+--- 136,144 ----
+  		
+  		void SetSensitivity ()
+  		{
+! 			// disable zoom on Fedora
+! 			zoom_checkbutton.Sensitive = false;
+! 			zoom_scale.Sensitive = false;
+  		}
+  
+  		void HandleToggled (object o, ToggledArgs args)
+diff -rNc gnome-do-0.8.2/Do.Interface.Linux.Docky/src/Docky.Utilities/DockPreferences.cs gnome-do-0.8.2-nozoom/Do.Interface.Linux.Docky/src/Docky.Utilities/DockPreferences.cs
+*** gnome-do-0.8.2/Do.Interface.Linux.Docky/src/Docky.Utilities/DockPreferences.cs	Thu Jun 25 22:39:51 2009
+--- gnome-do-0.8.2-nozoom/Do.Interface.Linux.Docky/src/Docky.Utilities/DockPreferences.cs	Wed Nov 18 11:31:57 2009
+***************
+*** 90,96 ****
+  		
+  		static bool enable_zoom = prefs.Get ("EnableZoom", true);
+  		public static bool ZoomEnabled {
+! 			get { return enable_zoom; }
+  			set {
+  				prefs.Set ("EnableZoom", value);
+  				enable_zoom = value;
+--- 90,96 ----
+  		
+  		static bool enable_zoom = prefs.Get ("EnableZoom", true);
+  		public static bool ZoomEnabled {
+! 			get { return false; }
+  			set {
+  				prefs.Set ("EnableZoom", value);
+  				enable_zoom = value;

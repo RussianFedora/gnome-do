@@ -1,25 +1,19 @@
 %define			debug_package %{nil}
-%define                 mainver 0.8.2
+%define                 mainver 0.8.3
 
 Name:			gnome-do
-Version:		0.8.2
-Release:		4%{?dist}
+Version:		0.8.3.1
+Release:		1%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-# The "Docky" theme code violates US Patent 7434177
-# To generate the clean tarball:
-# tar xvfz gnome-do-%{version}.tar.gz
-# rm -rf gnome-do-%{version}/Do.Interface.Linux.Docky
-# tar cvfz gnome-do-%{version}-nodocky.tar.gz gnome-do-%{version}/
-#
-# You will also need to apply Patch0, which fixes up configure* and Makefile*
-#
-# Source0:		http://edge.launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
-Source0:		gnome-do-%{version}-nodocky.tar.gz
-Patch0:			gnome-do-0.8.2-nodocky.patch
+#http://launchpad.net/do/0.8/0.8.3/+download/gnome-do-0.8.3.1.tar.gz
+Source0:		http://launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
+
+# The "Icon Magnification" was removed from "Docky" due to a potential violation of US Patent 7434177
+Patch0:			gnome-do-0.8.2-nozoom.patch
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -66,7 +60,7 @@ Development files for GNOME Do
 
 %prep
 %setup -q
-%patch0 -p1 -b .nodocky
+%patch0 -p1 -b .nozoom
 
 %build
 %configure
@@ -143,6 +137,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Wed Nov 18 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-5
+- Restored "Docky", but removed Icon Zoom due to potential violation of patents. 
+
 * Tue Nov 10 2009 Tom "spot" Callaway <tcallawa@redhat.com> - 0.8.2-4
 - Remove "Docky" due to patent issues
 
