@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.3.1
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -137,6 +137,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Jun 04 2010 Christian Krause <chkr@fedoraproject.org> - 0.8.3.1-2
+- Rebuilt against new mono-addins
+
 * Wed Nov 18 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-5
 - Restored "Docky", but removed Icon Zoom due to potential violation of patents. 
 
