@@ -3,7 +3,7 @@
 
 Name:			gnome-do
 Version:		0.8.3.1
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Quick launch and search
 
 License:		GPLv3+
@@ -14,6 +14,10 @@ Source0:		http://launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.t
 
 # The "Icon Magnification" was removed from "Docky" due to a potential violation of US Patent 7434177
 Patch0:			gnome-do-0.8.2-nozoom.patch
+# https://bugs.launchpad.net/do/+bug/634556
+# https://bugs.launchpad.net/do/+bug/634550
+Patch1:			gnome-do-0.8.3.1-mono-2.8.patch
+Patch2:			gnome-do-0.8.3.1-gdk-build-fix.patch
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -61,6 +65,8 @@ Development files for GNOME Do
 %prep
 %setup -q
 %patch0 -p1 -b .nozoom
+%patch1 -p0 -b .mono28-fix
+%patch2 -p1 -b .gdkbuild-fix
 
 %build
 %configure
@@ -137,6 +143,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Oct 29 2010 Christian Krause <chkr@fedoraproject.org> - 0.8.3.1-3
+- Rebuilt against Mono 2.8
+- Add patch for compiling against Mono 2.8 
+- Add patch to not set DGDK_DISABLE_DEPRECATED
+
 * Fri Jun 04 2010 Christian Krause <chkr@fedoraproject.org> - 0.8.3.1-2
 - Rebuilt against new mono-addins
 
