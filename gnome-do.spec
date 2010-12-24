@@ -1,19 +1,17 @@
 %define			debug_package %{nil}
-%define                 mainver 0.8.3
+%define			mainver 0.8.3
 
 Name:			gnome-do
 Version:		0.8.3.1
-Release:		1%{?dist}
+Release:		2%{?dist}.2
 Summary:		Quick launch and search
 
 License:		GPLv3+
 Group:			Applications/File	
 URL:			http://do.davebsd.com/
-#http://launchpad.net/do/0.8/0.8.3/+download/gnome-do-0.8.3.1.tar.gz
 Source0:		http://launchpad.net/do/0.8/%{mainver}/+download/gnome-do-%{version}.tar.gz
-
-# The "Icon Magnification" was removed from "Docky" due to a potential violation of US Patent 7434177
-Patch0:			gnome-do-0.8.2-nozoom.patch
+# https://bugs.launchpad.net/do/+bug/647495
+Patch0:			gnome-do-no-disable-deprecated.patch
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -32,14 +30,14 @@ BuildRequires:		gtk2-devel
 BuildRequires:		desktop-file-utils
 
 Requires(pre):		GConf2
-Requires(post): 	GConf2
-Requires(preun): 	GConf2
+Requires(post):		GConf2
+Requires(preun):	GConf2
 
 Requires:		mono(NDesk.DBus.GLib) = 1.0.0.0
 Requires:		gnome-keyring-sharp, gnome-desktop-sharp
 Requires:		pkgconfig
 
-ExcludeArch:            sparc64
+ExcludeArch:		sparc64
 
 %description
 GNOME Do (Do) is an intelligent launcher tool that makes performing
@@ -60,7 +58,7 @@ Development files for GNOME Do
 
 %prep
 %setup -q
-%patch0 -p1 -b .nozoom
+%patch0 -p1
 
 %build
 %configure
@@ -137,6 +135,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu Oct  6 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 0.8.3.1-2.2
+- rebuilt against gcc bug
+- fix https://bugs.launchpad.net/do/+bug/647495
+
+* Thu Feb 25 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 0.8.3.1-2.1
+- build with zoom
+
+* Mon Dec 21 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.3.1-1
+- Fixes the "Eating 100% CPU" bug. 
+- Updates to 0.8.3.1
+- More info: https://launchpad.net/do/+announcement/4538
+
 * Wed Nov 18 2009 Juan Rodriguez <nushio@fedoraproject.org> - 0.8.2-5
 - Restored "Docky", but removed Icon Zoom due to potential violation of patents. 
 

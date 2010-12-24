@@ -1,0 +1,26 @@
+diff -urN gnome-do-0.8.3.1.orig/libdo/Makefile.am gnome-do-0.8.3.1/libdo/Makefile.am
+--- gnome-do-0.8.3.1.orig/libdo/Makefile.am	2010-10-06 13:37:18.372036084 +0400
++++ gnome-do-0.8.3.1/libdo/Makefile.am	2010-10-06 13:37:26.910849707 +0400
+@@ -2,9 +2,6 @@
+ 
+ AM_CFLAGS = -DG_LOG_DOMAIN=\"libdo\"	\
+ 	    -DEGG_COMPILATION 		\
+-	    -DGTK_DISABLE_DEPRECATED 	\
+-	    -DGDK_DISABLE_DEPRECATED 	\
+-	    -DG_DISABLE_DEPRECATED	\
+ 	    $(LIBDO_CFLAGS)
+ 
+ 
+diff -urN gnome-do-0.8.3.1.orig/libdo/Makefile.in gnome-do-0.8.3.1/libdo/Makefile.in
+--- gnome-do-0.8.3.1.orig/libdo/Makefile.in	2010-10-06 13:37:18.372036084 +0400
++++ gnome-do-0.8.3.1/libdo/Makefile.in	2010-10-06 13:37:38.438850658 +0400
+@@ -280,9 +280,6 @@
+ INCLUDES = -I$(top_srcdir)
+ AM_CFLAGS = -DG_LOG_DOMAIN=\"libdo\"	\
+ 	    -DEGG_COMPILATION 		\
+-	    -DGTK_DISABLE_DEPRECATED 	\
+-	    -DGDK_DISABLE_DEPRECATED 	\
+-	    -DG_DISABLE_DEPRECATED	\
+ 	    $(LIBDO_CFLAGS)
+ 
+ dolibdir = $(pkglibdir)
